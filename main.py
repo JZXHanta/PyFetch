@@ -30,9 +30,6 @@ vm_rounded = int(np.round(psutil.virtual_memory().total / 1024 ** 3))
 
 # For future logos: logo is 40 characters wide
 
-logo = windows.windows_logo_colorized
-windows_logo_array = logo.split("\n")
-
 
 def get_gpu():
     line_as_bytes = subprocess.check_output("nvidia-smi -L", shell=True)
@@ -132,72 +129,73 @@ print(op_sys)
 
 logo = print_logo()
 
+logo_array = logo.split("\n")
 
 def pyfetch():
     print("\n")
-    for i in range(len(windows_logo_array)):
+    for i in range(len(logo_array)):
         if i == 0:
             # USERNAME@MACHINE
             print(
-                f"{windows_logo_array[i]}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
+                f"{logo_array[i]}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
 
         elif i == 1:
             # SEPARATOR
-            print(windows_logo_array[i],
+            print(logo_array[i],
                   f"{Bcolors.OKCYAN}----------------------------------------{Bcolors.ENDC}")
 
         elif i == 2:
             # OS
-            print(windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}OS        :{Bcolors.ENDC}",
+            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}OS        :{Bcolors.ENDC}",
                   op_sys)
 
         elif i == 3:
             # KERNEL
             print(
-                windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}KERNEL    :{Bcolors.ENDC}", kernel)
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}KERNEL    :{Bcolors.ENDC}", kernel)
 
         elif i == 4:
             # UPTIME
             print(
-                windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}UPTIME    :{Bcolors.ENDC}", uptime)
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}UPTIME    :{Bcolors.ENDC}", uptime)
 
         elif i == 5:
             # SHELL
-            print(windows_logo_array[i],
+            print(logo_array[i],
                   f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}SHELL     :{Bcolors.ENDC}", shell)
 
         elif i == 6:
             # RESOLUTION
-            print(windows_logo_array[i],
+            print(logo_array[i],
                   f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}RESOLUTION:{Bcolors.ENDC}", resolution)
 
         elif i == 7:
             # TERMINAL
-            print(windows_logo_array[i],
+            print(logo_array[i],
                   f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}TERMINAL  :{Bcolors.ENDC}", term)
 
         elif i == 8:
             # CPU
-            print(windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}CPU       :{Bcolors.ENDC}",
+            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}CPU       :{Bcolors.ENDC}",
                   f"{cpu}@{cpu_freq}")
 
         elif i == 9:
             # MEMORY
             print(
-                windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}MEM       :{Bcolors.ENDC}", vm_rounded, "GiB")
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}MEM       :{Bcolors.ENDC}", vm_rounded, "GiB")
 
         elif i == 10:
             # DISK
-            print(windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}DISK      :{Bcolors.ENDC}",
+            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}DISK      :{Bcolors.ENDC}",
                   "[insert disk data here]")
 
         elif i == 11:
             # ARCH
             print(
-                windows_logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}ARCH      :{Bcolors.ENDC}", cpu_arch)
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}ARCH      :{Bcolors.ENDC}", cpu_arch)
 
         else:
-            print(windows_logo_array[i])
+            print(logo_array[i])
 
 
 pyfetch()
