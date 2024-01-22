@@ -120,7 +120,6 @@ def print_logo():
     elif op_sys.split(" ")[0] == "Windows":
         return windows.windows_logo_colorized
 
-print(op_sys)
 
 # TODO: Test to see if running all fetches before rendering feels faster than
 #       fetching between lines (It doesn't really)
