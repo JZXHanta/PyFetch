@@ -9,6 +9,7 @@ import time
 import math
 from screeninfo import get_monitors
 import windows
+import getpass
 
 
 class bcolors:
@@ -48,7 +49,7 @@ def get_cpu_freq():
 
 
 def get_user_and_hostname():
-    username = os.getlogin()
+    username = getpass.getuser()
     hostname = platform.node()
     return f"{username}@{hostname}"
 
