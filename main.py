@@ -84,12 +84,17 @@ def get_shell():
 
 
 def get_resolution():
-    pass
+    monitors = get_monitors()
+    resolutions = []
+    for i in range(len(monitors)):
+        width = monitors[i].width
+        height = monitors[i].height
+        resolutions.append(f"{width}x{height}")
 
+    return ", ".join(resolutions)
 
 def get_terminal():
-    pass
-
+    return os.environ["TERM"]
 
 user_hostname = get_user_and_hostname()
 plat_version = platform.version()
@@ -99,6 +104,8 @@ cpu_arch = cpuinfo.get_cpu_info()['arch_string_raw']
 uptime = get_uptime()
 op_sys = get_os()
 shell = get_shell()
+term = get_terminal()
+resolution = get_resolution()
 
 
 # TODO: Test to see if running all fetches before rendering feels faster than
@@ -142,12 +149,12 @@ def pyfetch():
         elif i == 6:
             # RESOLUTION
             print(windows_logo_array[i],
-                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}RESOLUTION:{bcolors.ENDC}", "[insert resolution here]")
+                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}RESOLUTION:{bcolors.ENDC}", resolution)
 
         elif i == 7:
             # TERMINAL
             print(windows_logo_array[i],
-                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}TERMINAL  :{bcolors.ENDC}", "[insert terminal here]")
+                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}TERMINAL  :{bcolors.ENDC}", term)
 
         elif i == 8:
             # CPU
@@ -174,4 +181,5 @@ def pyfetch():
 
 
 get_shell()
+get_resolution()
 pyfetch()
