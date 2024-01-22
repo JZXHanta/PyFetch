@@ -9,10 +9,12 @@ import time
 import math
 from screeninfo import get_monitors
 import windows
+import linux
 import getpass
+import distro
 
 
-class bcolors:
+class Bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
@@ -27,10 +29,6 @@ class bcolors:
 vm_rounded = int(np.round(psutil.virtual_memory().total / 1024 ** 3))
 
 # For future logos: logo is 40 characters wide
-
-
-logo = windows.windows_logo_colorized
-windows_logo_array = logo.split("\n")
 
 
 def get_gpu():
@@ -55,8 +53,8 @@ def get_user_and_hostname():
 
 
 def get_uptime():
-    uptime = time.time() - psutil.boot_time()
-    uptime_min_working = math.floor(uptime // 60)
+    ut = time.time() - psutil.boot_time()
+    uptime_min_working = math.floor(ut // 60)
     uptime_hours = math.floor(uptime_min_working // 60)
     uptime_min = uptime_min_working % 60
     return f"{uptime_hours} hours {uptime_min} minutes"
@@ -74,14 +72,20 @@ def get_os():
     sys = platform.system()
     if sys == "Windows":
         ver = platform.version()
-        return real_windows_version(sys, ver)
+        return real_windows_version(sys, ver), ver
+    elif sys == "Linux":
+        kernel = platform.release()
+        dist = distro.name()
+        ver = distro.version()
+        d = f"{dist} {ver}"
+        return d, kernel
     else:
         return sys
 
 
 def get_shell():
-    shell , _ = shellingham.detect_shell()
-    return shell
+    sh, _ = shellingham.detect_shell()
+    return sh
 
 
 def get_resolution():
@@ -94,19 +98,27 @@ def get_resolution():
 
     return ", ".join(resolutions)
 
+
 def get_terminal():
     return os.environ["TERM"]
 
+
 user_hostname = get_user_and_hostname()
-plat_version = platform.version()
 cpu = cpuinfo.get_cpu_info()['brand_raw']
 cpu_freq = get_cpu_freq()
 cpu_arch = cpuinfo.get_cpu_info()['arch_string_raw']
 uptime = get_uptime()
-op_sys = get_os()
+op_sys, kernel = get_os()
 shell = get_shell()
 term = get_terminal()
 resolution = get_resolution()
+
+
+def print_logo():
+    if op_sys.split(" ")[0] == "Ubuntu":
+        return linux.ubuntu_logo_color
+    elif op_sys.split(" ")[0] == "Windows":
+        return windows.windows_logo_colorized
 
 
 # TODO: Test to see if running all fetches before rendering feels faster than
@@ -114,73 +126,75 @@ resolution = get_resolution()
 #       FOREACH??
 
 
+logo = print_logo()
+
+logo_array = logo.split("\n")
+
 def pyfetch():
     print("\n")
-    for i in range(len(windows_logo_array)):
+    for i in range(len(logo_array)):
         if i == 0:
             # USERNAME@MACHINE
             print(
-                f"{windows_logo_array[i]}{bcolors.WARNING} {user_hostname}{bcolors.ENDC}")
+                f"{logo_array[i]}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
 
         elif i == 1:
             # SEPARATOR
-            print(windows_logo_array[i],
-                  f"{bcolors.OKCYAN}----------------------------------------{bcolors.ENDC}")
+            print(logo_array[i],
+                  f"{Bcolors.OKCYAN}----------------------------------------{Bcolors.ENDC}")
 
         elif i == 2:
             # OS
-            print(windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}OS        :{bcolors.ENDC}",
+            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}OS        :{Bcolors.ENDC}",
                   op_sys)
 
         elif i == 3:
             # KERNEL
             print(
-                windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}KERNEL    :{bcolors.ENDC}", plat_version)
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}KERNEL    :{Bcolors.ENDC}", kernel)
 
         elif i == 4:
             # UPTIME
             print(
-                windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}UPTIME    :{bcolors.ENDC}", uptime)
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}UPTIME    :{Bcolors.ENDC}", uptime)
 
         elif i == 5:
             # SHELL
-            print(windows_logo_array[i],
-                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}SHELL     :{bcolors.ENDC}", shell)
+            print(logo_array[i],
+                  f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}SHELL     :{Bcolors.ENDC}", shell)
 
         elif i == 6:
             # RESOLUTION
-            print(windows_logo_array[i],
-                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}RESOLUTION:{bcolors.ENDC}", resolution)
+            print(logo_array[i],
+                  f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}RESOLUTION:{Bcolors.ENDC}", resolution)
 
         elif i == 7:
             # TERMINAL
-            print(windows_logo_array[i],
-                  f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}TERMINAL  :{bcolors.ENDC}", term)
+            print(logo_array[i],
+                  f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}TERMINAL  :{Bcolors.ENDC}", term)
 
         elif i == 8:
             # CPU
-            print(windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}CPU       :{bcolors.ENDC}",
+            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}CPU       :{Bcolors.ENDC}",
                   f"{cpu}@{cpu_freq}")
 
         elif i == 9:
             # MEMORY
             print(
-                windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}MEM       :{bcolors.ENDC}", vm_rounded, "GiB")
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}MEM       :{Bcolors.ENDC}", vm_rounded, "GiB")
 
         elif i == 10:
             # DISK
-            print(windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}DISK      :{bcolors.ENDC}",
+            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}DISK      :{Bcolors.ENDC}",
                   "[insert disk data here]")
 
         elif i == 11:
             # ARCH
             print(
-                windows_logo_array[i], f"  {bcolors.OKCYAN}{bcolors.BOLD}{bcolors.UNDERLINE}ARCH      :{bcolors.ENDC}", cpu_arch)
+                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}ARCH      :{Bcolors.ENDC}", cpu_arch)
 
         else:
-            print(windows_logo_array[i])
+            print(logo_array[i])
 
 
-get_shell()
-get_resolution()
 pyfetch()
