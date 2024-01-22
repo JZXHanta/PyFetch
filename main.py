@@ -80,7 +80,8 @@ def get_os():
         kernel = platform.release()
         dist = distro.name()
         ver = distro.version()
-        return f"{dist} {ver}", kernel
+        d = dist + " " + ver
+        return d, kernel
     else:
         return sys
 
