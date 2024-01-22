@@ -1,4 +1,4 @@
-class bcolors:
+class Bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
@@ -32,19 +32,19 @@ windows_logo = """       @@@
 
 windows_logo_colorized = f"""       @@@                              
          @@@                            
-         {bcolors.FAIL}**{bcolors.ENDC}@@@@@@@                      
-     {bcolors.FAIL}**    **{bcolors.ENDC} @@@@@@@@@@@@@@@@@@        
-       {bcolors.FAIL}** ******{bcolors.ENDC}@@@@@@@@@@@@@@@@@@@@    
-    @@   {bcolors.FAIL}***** ****{bcolors.ENDC}@@@@{bcolors.FAIL}******{bcolors.ENDC}@@%%@@@@@@ 
-   {bcolors.OKBLUE}++{bcolors.ENDC}@@@   {bcolors.FAIL}*******{bcolors.ENDC}@@@@{bcolors.FAIL}******{bcolors.ENDC}%@#{bcolors.OKGREEN}===={bcolors.ENDC}%@@@@
-    {bcolors.OKBLUE}+++{bcolors.ENDC}@@@@@@@{bcolors.FAIL}***{bcolors.ENDC} @@@#{bcolors.FAIL}*****{bcolors.ENDC}#@@{bcolors.OKGREEN}====={bcolors.ENDC}*@@@@
- {bcolors.OKBLUE}++    ++{bcolors.ENDC} @@@@@@@@@@@#####{bcolors.FAIL}*{bcolors.ENDC}@@{bcolors.OKGREEN}====={bcolors.ENDC}+@@@@ 
-   {bcolors.OKBLUE}++ ++++++{bcolors.ENDC}@@%%@@@@###@@@@@@@*{bcolors.OKGREEN}=={bcolors.ENDC}+@@@@  
-@@   {bcolors.OKBLUE}+++ ++++++{bcolors.ENDC}@@@@{bcolors.OKBLUE}++++++{bcolors.ENDC}%@+=*@@@%@@@@  
-  @@   {bcolors.OKBLUE}+++++++{bcolors.ENDC}@@@@{bcolors.OKBLUE}++++++{bcolors.ENDC}%@%{bcolors.WARNING}-----{bcolors.ENDC}%@@@@   
-   @@@@@@@{bcolors.OKBLUE}+++{bcolors.ENDC}#@@@#{bcolors.OKBLUE}+++++{bcolors.ENDC}#@%{bcolors.WARNING}-----{bcolors.ENDC}=@@@@    
-      @@@@@@@@@@@@@@@@%@@{bcolors.WARNING}-----{bcolors.ENDC}=@@@@     
-         @@@@@@@@@@@@@@@@@@#{bcolors.WARNING}--{bcolors.ENDC}%@@@      
+         {Bcolors.FAIL}**{Bcolors.ENDC}@@@@@@@                      
+     {Bcolors.FAIL}**    **{Bcolors.ENDC} @@@@@@@@@@@@@@@@@@        
+       {Bcolors.FAIL}** ******{Bcolors.ENDC}@@@@@@@@@@@@@@@@@@@@    
+    @@   {Bcolors.FAIL}***** ****{Bcolors.ENDC}@@@@{Bcolors.FAIL}******{Bcolors.ENDC}@@%%@@@@@@ 
+   {Bcolors.OKBLUE}++{Bcolors.ENDC}@@@   {Bcolors.FAIL}*******{Bcolors.ENDC}@@@@{Bcolors.FAIL}******{Bcolors.ENDC}%@#{Bcolors.OKGREEN}===={Bcolors.ENDC}%@@@@
+    {Bcolors.OKBLUE}+++{Bcolors.ENDC}@@@@@@@{Bcolors.FAIL}***{Bcolors.ENDC} @@@#{Bcolors.FAIL}*****{Bcolors.ENDC}#@@{Bcolors.OKGREEN}====={Bcolors.ENDC}*@@@@
+ {Bcolors.OKBLUE}++    ++{Bcolors.ENDC} @@@@@@@@@@@#####{Bcolors.FAIL}*{Bcolors.ENDC}@@{Bcolors.OKGREEN}====={Bcolors.ENDC}+@@@@ 
+   {Bcolors.OKBLUE}++ ++++++{Bcolors.ENDC}@@%%@@@@###@@@@@@@*{Bcolors.OKGREEN}=={Bcolors.ENDC}+@@@@  
+@@   {Bcolors.OKBLUE}+++ ++++++{Bcolors.ENDC}@@@@{Bcolors.OKBLUE}++++++{Bcolors.ENDC}%@+=*@@@%@@@@  
+  @@   {Bcolors.OKBLUE}+++++++{Bcolors.ENDC}@@@@{Bcolors.OKBLUE}++++++{Bcolors.ENDC}%@%{Bcolors.WARNING}-----{Bcolors.ENDC}%@@@@   
+   @@@@@@@{Bcolors.OKBLUE}+++{Bcolors.ENDC}#@@@#{Bcolors.OKBLUE}+++++{Bcolors.ENDC}#@%{Bcolors.WARNING}-----{Bcolors.ENDC}=@@@@    
+      @@@@@@@@@@@@@@@@%@@{Bcolors.WARNING}-----{Bcolors.ENDC}=@@@@     
+         @@@@@@@@@@@@@@@@@@#{Bcolors.WARNING}--{Bcolors.ENDC}%@@@      
                        @@@@@@@@@@       
                            @@@@@@       
                               @@        
