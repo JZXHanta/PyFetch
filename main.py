@@ -9,6 +9,7 @@ import time
 import math
 from screeninfo import get_monitors
 import windows
+import linux
 import getpass
 import distro
 
@@ -74,13 +75,12 @@ def get_os():
     sys = platform.system()
     if sys == "Windows":
         ver = platform.version()
-        kernel = ver
-        return real_windows_version(sys, ver), kernel
+        return real_windows_version(sys, ver), ver
     elif sys == "Linux":
         kernel = platform.release()
         dist = distro.name()
         ver = distro.version()
-        d = dist + " " + ver
+        d = f"{dist} {ver}"
         return d, kernel
     else:
         return sys
@@ -116,10 +116,20 @@ shell = get_shell()
 term = get_terminal()
 resolution = get_resolution()
 
+def print_logo():
+    if op_sys.split(" ")[0] == "Ubuntu":
+        return linux.ubuntu_logo_color
+    elif op_sys.split(" ")[0] == "Windows":
+        return windows.windows_logo_colorized
+
+
 
 # TODO: Test to see if running all fetches before rendering feels faster than
 #       fetching between lines (It doesn't really)
 #       FOREACH??
+
+
+logo = print_logo()
 
 
 def pyfetch():
