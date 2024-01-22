@@ -116,13 +116,14 @@ shell = get_shell()
 term = get_terminal()
 resolution = get_resolution()
 
+
 def print_logo():
     if op_sys.split(" ")[0] == "Ubuntu":
         return linux.ubuntu_logo_color
     elif op_sys.split(" ")[0] == "Windows":
         return windows.windows_logo_colorized
 
-
+print(op_sys)
 
 # TODO: Test to see if running all fetches before rendering feels faster than
 #       fetching between lines (It doesn't really)
