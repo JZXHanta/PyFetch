@@ -62,8 +62,8 @@ def get_uptime():
 
 
 def real_windows_version(system, version):
-    maj, _, min = version.split(".")
-    if system == "Windows" and int(min) >= 22000:
+    _, _, minor = version.split(".")
+    if system == "Windows" and int(minor) >= 22000:
         return "Windows 11"
     else:
         return "Windows 10"
