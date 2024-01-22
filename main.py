@@ -10,6 +10,7 @@ import math
 from screeninfo import get_monitors
 import windows
 import getpass
+import distro
 
 
 class Bcolors:
@@ -77,7 +78,9 @@ def get_os():
         return real_windows_version(sys, ver), kernel
     elif sys == "Linux":
         kernel = platform.release()
-        return sys, kernel
+        dist = distro.name()
+        ver = distro.version()
+        return f"{dist} {ver}", kernel
     else:
         return sys
 
