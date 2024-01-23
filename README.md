@@ -1,6 +1,6 @@
 # PyFetch
 
-Do you really love **neofetch** but its just a little too fast? Maybe you wish it was 8.75 times slower?
+Do you really love [neofetch](https://github.com/dylanaraps/neofetch) but its just a little too fast? Maybe you wish it was 8.75 times slower?
 
 Well, your wait is over! I have made a clone using python that is very noticeably **slower** *AND* has **less features**!
 
@@ -12,7 +12,7 @@ Well, your wait is over! I have made a clone using python that is very noticeabl
   - Ubuntu 22.04 (on WSL)
   - Pop!_OS 22.04
   - Fedora 39
-  - MacOS
+  - MacOS 14
 
   (If OS is not on above list it will have no ASCII art created for it yet most likely)
 
