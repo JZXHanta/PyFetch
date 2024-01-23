@@ -15,18 +15,18 @@ import distro
 
 
 class Bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKCYAN = "\033[96m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    ENDC = "\033[0m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
 
 
-vm_rounded = int(np.round(psutil.virtual_memory().total / 1024 ** 3))
+vm_rounded = int(np.round(psutil.virtual_memory().total / 1024**3))
 
 # For future logos: logo is 40 characters wide
 
@@ -40,7 +40,7 @@ def get_gpu():
 
 
 def get_cpu_freq():
-    freq_string = cpuinfo.get_cpu_info()['hz_actual_friendly']
+    freq_string = cpuinfo.get_cpu_info()["hz_actual_friendly"]
     num, unit = freq_string.split(" ")
     num = np.round(float(num), 1)
     return f"{num} {unit}"
@@ -104,9 +104,9 @@ def get_terminal():
 
 
 user_hostname = get_user_and_hostname()
-cpu = cpuinfo.get_cpu_info()['brand_raw']
+cpu = cpuinfo.get_cpu_info()["brand_raw"]
 cpu_freq = get_cpu_freq()
-cpu_arch = cpuinfo.get_cpu_info()['arch_string_raw']
+cpu_arch = cpuinfo.get_cpu_info()["arch_string_raw"]
 uptime = get_uptime()
 op_sys, kernel = get_os()
 shell = get_shell()
@@ -119,6 +119,10 @@ def print_logo():
         return linux.ubuntu_logo_color
     elif op_sys.split(" ")[0] == "Windows":
         return windows.windows_logo_colorized
+    # elif op_sys.split(" ")[0] == "Pop!_OS":
+    #     return linux.pop_os_logo_colored
+    else:
+        return linux.error_logo_colored
 
 
 # TODO: Test to see if running all fetches before rendering feels faster than
@@ -130,68 +134,101 @@ logo = print_logo()
 
 logo_array = logo.split("\n")
 
+
 def pyfetch():
     print("\n")
     for i in range(len(logo_array)):
         if i == 0:
             # USERNAME@MACHINE
-            print(
-                f"{logo_array[i]}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
+            print(f"{logo_array[i]}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
 
         elif i == 1:
             # SEPARATOR
-            print(logo_array[i],
-                  f"{Bcolors.OKCYAN}----------------------------------------{Bcolors.ENDC}")
+            print(
+                logo_array[i],
+                f"{Bcolors.OKCYAN}----------------------------------------{Bcolors.ENDC}",
+            )
 
         elif i == 2:
             # OS
-            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}OS        :{Bcolors.ENDC}",
-                  op_sys)
+            print(
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}OS        :{Bcolors.ENDC}",
+                op_sys,
+            )
 
         elif i == 3:
             # KERNEL
             print(
-                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}KERNEL    :{Bcolors.ENDC}", kernel)
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}KERNEL    :{Bcolors.ENDC}",
+                kernel,
+            )
 
         elif i == 4:
             # UPTIME
             print(
-                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}UPTIME    :{Bcolors.ENDC}", uptime)
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}UPTIME    :{Bcolors.ENDC}",
+                uptime,
+            )
 
         elif i == 5:
             # SHELL
-            print(logo_array[i],
-                  f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}SHELL     :{Bcolors.ENDC}", shell)
+            print(
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}SHELL     :{Bcolors.ENDC}",
+                shell,
+            )
 
         elif i == 6:
             # RESOLUTION
-            print(logo_array[i],
-                  f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}RESOLUTION:{Bcolors.ENDC}", resolution)
+            print(
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}RESOLUTION:{Bcolors.ENDC}",
+                resolution,
+            )
 
         elif i == 7:
             # TERMINAL
-            print(logo_array[i],
-                  f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}TERMINAL  :{Bcolors.ENDC}", term)
+            print(
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}TERMINAL  :{Bcolors.ENDC}",
+                term,
+            )
 
         elif i == 8:
             # CPU
-            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}CPU       :{Bcolors.ENDC}",
-                  f"{cpu}@{cpu_freq}")
+            print(
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}CPU       :{Bcolors.ENDC}",
+                f"{cpu}@{cpu_freq}",
+            )
 
         elif i == 9:
             # MEMORY
             print(
-                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}MEM       :{Bcolors.ENDC}", vm_rounded, "GiB")
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}MEM       :{Bcolors.ENDC}",
+                vm_rounded,
+                "GiB",
+            )
 
         elif i == 10:
             # DISK
-            print(logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}DISK      :{Bcolors.ENDC}",
-                  "[insert disk data here]")
+            print(
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}DISK      :{Bcolors.ENDC}",
+                "[insert disk data here]",
+            )
 
         elif i == 11:
             # ARCH
             print(
-                logo_array[i], f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}ARCH      :{Bcolors.ENDC}", cpu_arch)
+                logo_array[i],
+                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}ARCH      :{Bcolors.ENDC}",
+                cpu_arch,
+            )
 
         else:
             print(logo_array[i])

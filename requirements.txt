@@ -3,3 +3,4 @@ psutil~=5.9.8
 numpy~=1.26.3
 screeninfo~=0.8.1
 shellingham~=1.5.4
+distro~=1.9.0
