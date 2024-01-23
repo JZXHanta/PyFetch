@@ -38,10 +38,13 @@ def get_gpu():
 
 
 def get_cpu_freq():
-    freq_string = cpuinfo.get_cpu_info()["hz_actual_friendly"]
-    num, unit = freq_string.split(" ")
-    num = np.round(float(num), 1)
-    return f"{num} {unit}"
+    if platform.platform(aliased=True).split("-")[0] == "macOS":
+        return "--"
+    else:
+        freq_string = cpuinfo.get_cpu_info()["hz_actual_friendly"]
+        num, unit = freq_string.split(" ")
+        num = np.round(float(num), 1)
+        return f"{num} {unit}"
 
 
 def get_user_and_hostname():
@@ -68,6 +71,7 @@ def real_windows_version(system, version):
 
 def get_os():
     sys = platform.system()
+    plat = platform.platform(aliased=True)
     if sys == "Windows":
         ver = platform.version()
         return real_windows_version(sys, ver), ver
@@ -77,8 +81,13 @@ def get_os():
         ver = distro.version()
         d = f"{dist} {ver}"
         return d, kernel
+    elif sys == 'Darwin':
+        if plat.split("-")[0] == "macOS":
+            kernel = plat.split("-")[1]
+            return "MacOS", kernel
+        
     else:
-        return sys
+        return sys, ""
 
 
 def get_shell():
