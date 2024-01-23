@@ -101,6 +101,12 @@ def get_terminal():
     return os.environ["TERM"]
 
 
+def get_disk_info():
+    total = math.floor(((psutil.disk_usage("/").total / 1024) / 1024) / 1024)
+    used = math.floor(((psutil.disk_usage("/").used / 1024) / 1024) / 1024)
+    return f"{used}/{total} GiB"
+
+
 user_hostname = get_user_and_hostname()
 cpu = cpuinfo.get_cpu_info()["brand_raw"]
 cpu_freq = get_cpu_freq()
@@ -110,6 +116,7 @@ op_sys, kernel = get_os()
 shell = get_shell()
 term = get_terminal()
 resolution = get_resolution()
+disk_info = get_disk_info()
 
 
 def print_logo():
@@ -150,7 +157,7 @@ def pyfetch():
         term,
         f"{cpu}@{cpu_freq}",
         f"{vm_rounded} GiB",
-        "[insert disk data here]",
+        disk_info,
         cpu_arch,
     ]
     for i, line in enumerate(logo_array):
