@@ -12,6 +12,7 @@ import windows
 import linux
 import getpass
 import distro
+import macos
 
 
 class Bcolors:
@@ -137,6 +138,8 @@ def print_logo():
         return linux.pop_os_logo_colored
     elif op_sys.split(" ")[0] == "Fedora":
         return linux.fedora_logo_colored
+    elif op_sys.split(" ")[0] == "MacOS":
+        return macos.mac_logo_colored
     else:
         return linux.error_logo_colored
 
@@ -166,7 +169,7 @@ def pyfetch():
         shell,
         resolution,
         term,
-        f"{cpu}@{cpu_freq}",
+        f"{cpu} @ {cpu_freq}",
         f"{vm_rounded} GiB",
         disk_info,
         cpu_arch,
