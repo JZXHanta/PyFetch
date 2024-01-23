@@ -4,7 +4,7 @@ Do you really love **neofetch** but its just a little too fast? Maybe you wish i
 
 Well, your wait is over! I have made a clone using python that is very noticeably **slower** *AND* has **less features**!
 
-![Screenshot from 2024-01-22 22-36-38](https://github.com/JZXHanta/PyFetch/assets/61375197/ff0f50b0-c012-44ec-885a-88c74e98d485)
+![Screenshot from 2024-01-22 23-10-36](https://github.com/JZXHanta/PyFetch/assets/61375197/3b6a4808-9190-418a-8628-d5b86fdc5075)
 
 
 ## Has only been tested on:
