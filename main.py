@@ -28,8 +28,6 @@ class Bcolors:
 
 vm_rounded = int(np.round(psutil.virtual_memory().total / 1024**3))
 
-# For future logos: logo is 40 characters wide
-
 
 def get_gpu():
     line_as_bytes = subprocess.check_output("nvidia-smi -L", shell=True)
@@ -119,119 +117,58 @@ def print_logo():
         return linux.ubuntu_logo_color
     elif op_sys.split(" ")[0] == "Windows":
         return windows.windows_logo_colorized
-    # elif op_sys.split(" ")[0] == "Pop!_OS":
-    #     return linux.pop_os_logo_colored
+    elif op_sys.split(" ")[0] == "Pop!_OS":
+        return linux.pop_os_logo_colored
     else:
         return linux.error_logo_colored
 
 
-# TODO: Test to see if running all fetches before rendering feels faster than
-#       fetching between lines (It doesn't really)
-#       FOREACH??
-
-
 logo = print_logo()
-
 logo_array = logo.split("\n")
 
 
 def pyfetch():
     print("\n")
-    for i in range(len(logo_array)):
+    info_labels = [
+        "OS        ",
+        "KERNEL    ",
+        "UPTIME    ",
+        "SHELL     ",
+        "RESOLUTION",
+        "TERMINAL  ",
+        "CPU       ",
+        "MEM       ",
+        "DISK      ",
+        "ARCH      ",
+    ]
+    info_data = [
+        op_sys,
+        kernel,
+        uptime,
+        shell,
+        resolution,
+        term,
+        f"{cpu}@{cpu_freq}",
+        f"{vm_rounded} GiB",
+        "[insert disk data here]",
+        cpu_arch,
+    ]
+    for i, line in enumerate(logo_array):
         if i == 0:
-            # USERNAME@MACHINE
-            print(f"{logo_array[i]}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
-
+            print(f"{line}{Bcolors.WARNING} {user_hostname}{Bcolors.ENDC}")
         elif i == 1:
-            # SEPARATOR
             print(
-                logo_array[i],
+                line,
                 f"{Bcolors.OKCYAN}----------------------------------------{Bcolors.ENDC}",
             )
-
-        elif i == 2:
-            # OS
+        elif 2 <= i <= 11:
+            label = info_labels[i - 2]
+            data = info_data[i - 2]
             print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}OS        :{Bcolors.ENDC}",
-                op_sys,
+                f"{line}  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}{label}:{Bcolors.ENDC} {data}"
             )
-
-        elif i == 3:
-            # KERNEL
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}KERNEL    :{Bcolors.ENDC}",
-                kernel,
-            )
-
-        elif i == 4:
-            # UPTIME
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}UPTIME    :{Bcolors.ENDC}",
-                uptime,
-            )
-
-        elif i == 5:
-            # SHELL
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}SHELL     :{Bcolors.ENDC}",
-                shell,
-            )
-
-        elif i == 6:
-            # RESOLUTION
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}RESOLUTION:{Bcolors.ENDC}",
-                resolution,
-            )
-
-        elif i == 7:
-            # TERMINAL
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}TERMINAL  :{Bcolors.ENDC}",
-                term,
-            )
-
-        elif i == 8:
-            # CPU
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}CPU       :{Bcolors.ENDC}",
-                f"{cpu}@{cpu_freq}",
-            )
-
-        elif i == 9:
-            # MEMORY
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}MEM       :{Bcolors.ENDC}",
-                vm_rounded,
-                "GiB",
-            )
-
-        elif i == 10:
-            # DISK
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}DISK      :{Bcolors.ENDC}",
-                "[insert disk data here]",
-            )
-
-        elif i == 11:
-            # ARCH
-            print(
-                logo_array[i],
-                f"  {Bcolors.OKCYAN}{Bcolors.BOLD}{Bcolors.UNDERLINE}ARCH      :{Bcolors.ENDC}",
-                cpu_arch,
-            )
-
         else:
-            print(logo_array[i])
+            print(line)
 
 
 pyfetch()
