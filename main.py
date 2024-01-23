@@ -126,6 +126,8 @@ def print_logo():
         return windows.windows_logo_colorized
     elif op_sys.split(" ")[0] == "Pop!_OS":
         return linux.pop_os_logo_colored
+    elif op_sys.split(" ")[0] == "Fedora":
+        return linux.fedora_logo_colored
     else:
         return linux.error_logo_colored
 

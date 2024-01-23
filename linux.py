@@ -120,3 +120,46 @@ pop_os_logo_colored = f"""
                                         
                                         
                                         """
+
+fedora_logo = """          .:-==============-:.          
+       .:======================-..      
+    ..-===========================..    
+    :==============================-.   
+  .=================-.    .:=========.. 
+ .================-.  ..:..  .========:.
+.-================. .-=====: .:========.
+:=================  .======:..:========-
+==================  .===================
+==================  .-==================
+=========:..   .-=       .+=============
+=======-. ...:--==  .:---===============
+======-  .-=======  .==================-
+======:  :========  .==================.
+======-  .=======-  .=================:.
+=======:  .:-=--.. .-================:. 
+=========..     ..:================-.   
+============----==================:.    
+===============================-..      
+.===========================-.          """
+
+fedora_logo_colored = f"""          .:{windows.Bcolors.OKBLUE}-==============-{windows.Bcolors.OKBLUE}:.          
+       .:{windows.Bcolors.OKBLUE}======================-{windows.Bcolors.OKBLUE}..      
+    ..{windows.Bcolors.OKBLUE}-==========================={windows.Bcolors.OKBLUE}..    
+    :{windows.Bcolors.OKBLUE}==============================-{windows.Bcolors.OKBLUE}.   
+  .{windows.Bcolors.OKBLUE}=================-{windows.Bcolors.OKBLUE}.    .:{windows.Bcolors.OKBLUE}========={windows.Bcolors.OKBLUE}.. 
+ .{windows.Bcolors.OKBLUE}================-{windows.Bcolors.OKBLUE}.  ..:..  .{windows.Bcolors.OKBLUE}========{windows.Bcolors.OKBLUE}:.
+.{windows.Bcolors.OKBLUE}-================{windows.Bcolors.OKBLUE}. .{windows.Bcolors.OKBLUE}-====={windows.Bcolors.OKBLUE}: .:{windows.Bcolors.OKBLUE}========{windows.Bcolors.OKBLUE}.
+:{windows.Bcolors.OKBLUE}================={windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}======{windows.Bcolors.OKBLUE}:..:{windows.Bcolors.OKBLUE}========-{windows.Bcolors.OKBLUE}
+{windows.Bcolors.OKBLUE}=================={windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}==================={windows.Bcolors.OKBLUE}
+{windows.Bcolors.OKBLUE}=================={windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}-=================={windows.Bcolors.OKBLUE}
+{windows.Bcolors.OKBLUE}========={windows.Bcolors.OKBLUE}:..   .{windows.Bcolors.OKBLUE}-={windows.Bcolors.OKBLUE}       .+{windows.Bcolors.OKBLUE}============={windows.Bcolors.OKBLUE}
+{windows.Bcolors.OKBLUE}=======-{windows.Bcolors.OKBLUE}. ...:{windows.Bcolors.OKBLUE}--=={windows.Bcolors.OKBLUE}  .:{windows.Bcolors.OKBLUE}---==============={windows.Bcolors.OKBLUE}
+{windows.Bcolors.OKBLUE}======-{windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}-======={windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}==================-{windows.Bcolors.OKBLUE}
+{windows.Bcolors.OKBLUE}======{windows.Bcolors.OKBLUE}:  :{windows.Bcolors.OKBLUE}========{windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}=================={windows.Bcolors.OKBLUE}.
+{windows.Bcolors.OKBLUE}======-{windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}=======-{windows.Bcolors.OKBLUE}  .{windows.Bcolors.OKBLUE}================={windows.Bcolors.OKBLUE}:.
+{windows.Bcolors.OKBLUE}======={windows.Bcolors.OKBLUE}:  .:{windows.Bcolors.OKBLUE}-=--{windows.Bcolors.OKBLUE}.. .{windows.Bcolors.OKBLUE}-================{windows.Bcolors.OKBLUE}:. 
+{windows.Bcolors.OKBLUE}========={windows.Bcolors.OKBLUE}..     ..:{windows.Bcolors.OKBLUE}================-{windows.Bcolors.OKBLUE}.   
+{windows.Bcolors.OKBLUE}============----=================={windows.Bcolors.OKBLUE}:.    
+{windows.Bcolors.OKBLUE}===============================-{windows.Bcolors.OKBLUE}..      
+.{windows.Bcolors.OKBLUE}===========================-{windows.Bcolors.OKBLUE}.          """
+{windows.Bcolors.OKBLUE}
