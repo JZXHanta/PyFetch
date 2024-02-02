@@ -19,6 +19,23 @@ Well, your wait is over! I have made a clone using python that is very noticeabl
 
 
 ## To install (Assuming Python and Pip are already installed):
-  - clone repo ```git clone https://github.com/JZXHanta/PyFetch.git```
-  - run command ```pip install -r requirements.txt``` or ```pip3 install -r requirements.txt```
-  - run command ```python3 main.py``` or ```python main.py```
+  - Clone repo:
+    ```bash
+    git clone https://github.com/JZXHanta/PyFetch.git
+    ```
+  - Install pyhton requirements:
+    ```bash
+    pip install -r requirements.txt
+    ```
+    **or**
+    ```bash
+    pip3 install -r requirements.txt
+    ```
+  - Run script:
+    ```bash
+    python3 main.py
+    ```
+    **or**
+    ```bash
+    python main.py
+    ```
