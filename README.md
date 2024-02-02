@@ -7,7 +7,7 @@ Well, your wait is over! I have made a clone using python that is very noticeabl
 ![Screenshot from 2024-01-22 23-10-36](https://github.com/JZXHanta/PyFetch/assets/61375197/3b6a4808-9190-418a-8628-d5b86fdc5075)
 
 
-## Has only been tested on:
+## Has only been tested on
   - Windows 11
   - Ubuntu 22.04 (on WSL)
   - Pop!_OS 22.04
@@ -18,7 +18,7 @@ Well, your wait is over! I have made a clone using python that is very noticeabl
 
 
 
-## To install (Assuming Python and Pip are already installed):
+## To install (Assuming Python and Pip are already installed)
   - Clone repo:
     ```bash
     git clone https://github.com/JZXHanta/PyFetch.git
@@ -40,5 +40,5 @@ Well, your wait is over! I have made a clone using python that is very noticeabl
     python main.py
     ```
 
-## Contributing:
+## Contributing
 If you'd like to contribute, please fork the repository and open a pull request to the `main` branch.
