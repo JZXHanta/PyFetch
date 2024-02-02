@@ -39,3 +39,6 @@ Well, your wait is over! I have made a clone using python that is very noticeabl
     ```bash
     python main.py
     ```
+
+## Contributing:
+If you'd like to contribute, please fork the repository and open a pull request to the `main` branch.
